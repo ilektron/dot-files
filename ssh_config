@@ -1,0 +1,26 @@
+# This file should be called 'config' and placed in the ~/.ssh directory
+
+Host modifyinkapi
+    HostName 162.243.104.55
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host modifyinkpublic
+    HostName 107.170.97.87
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host modifyinkfiles
+    HostName 107.170.97.202
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host modifyinkdev
+    HostName 107.170.84.53
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host modifyinkdb
+    HostName 107.170.97.200
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host recipes
+    HostName 104.131.165.194
+    User root
+    IdentityFile ~/.ssh/id_rsa
