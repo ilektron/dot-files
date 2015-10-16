@@ -35,6 +35,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'tpope/vim-fireplace'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'hdima/python-syntax' " Added python synax highlighting
 
 " Color schemes
 Plugin 'morhetz/gruvbox'
@@ -63,6 +64,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .hg
     \ --ignore .DS_Store
     \ --ignore "**/*.pyc"
+    \ --ignore "**/*.swp"
+    \ --ignore "**/*.swap"
     \ -g ""'
 " Options for jiangmiao/auto-pairs
 let g:AutoPairsMapSpace=0
@@ -85,6 +88,8 @@ autocmd VimEnter,Colorscheme * hi IndentGuidesEven guibg=#3C3836 ctermbg=4
 let g:AgSmartCase=1
 " Options for morhetz/gruvbox
 let g:gruvbox_bold=0
+" Options for python-syntax
+let python_highlight_all=1
 """"""""""" End Plugin Options
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,6 +115,7 @@ set smartcase " Smartcase in search
 set cursorline " Show current line highlighted
 set incsearch
 set nowrap
+set tags=tags; " Tell vim to look for tags recursively downwords
 set nostartofline " Keeps the cursor in its last spot when changing buffers (prevents it from going to start of line)
 
 

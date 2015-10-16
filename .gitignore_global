@@ -1,4 +1,6 @@
 *.swp
 *.swap
+*.swo
 .DS_Store
 work_logs
+.idea

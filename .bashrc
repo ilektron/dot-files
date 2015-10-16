@@ -17,7 +17,6 @@ alias gps="git push"
 alias gcom="git commit"
 alias dbdev='ssh -L 8081:localhost:8080 modifyinkdev'
 alias dblive='ssh -L 8081:localhost:8080 modifyinkdb'
-alias vim='/usr/local/Cellar/vim/7.4.488/bin/vim'
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -25,11 +24,22 @@ GIT_PS1_SHOWSTASHSTATE=true
 PS1="\[$Cyan\]\w\[$Yellow\]\$(__git_ps1 ' (%s)') \[$White\]-> "
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export SITE_DOWN=true
-
+export PATH="/usr/local/sbin:$PATH"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
 # Change limit of number open files allowed
 ulimit -n 4096
+
+export NVM_DIR="/Users/isaachess/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+##################
+## Vivint stuff ##
+##################
+
+alias activate="source ~/Programming/vivint/Platform/MY_ENV/bin/activate" # Enter the virtual environment
+alias start_services="launchctl load ~/Library/LaunchAgents/Vivint/*" # start rabbitmq, nginx, memcached, redis
+alias stop_services="launchctl unload ~/Library/LaunchAgents/Vivint/*" # stop the above
+alias bemuse="nohup ~/Programming/vivint/bemuse/BemuseDev/bemusedev.sh &" # start bemuse
