@@ -36,6 +36,8 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'tpope/vim-fireplace'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'hdima/python-syntax' " Added python synax highlighting
+Plugin 'tfnico/vim-gradle' " Gradle support for building java
+Plugin 'derekwyatt/vim-scala' " Scala syntax highlighting and minor features
 
 " Color schemes
 Plugin 'morhetz/gruvbox'
@@ -58,6 +60,8 @@ let g:session_default_to_last=1
 let g:session_autoload='yes'
 " Ctrl P options for kien/ctrlp.vim
 let g:ctrlp_show_hidden=1
+let g:ctrlp_working_path_mode = 'wa'
+let g:ctrlp_root_markers=['ctrlp_root.txt']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
@@ -89,7 +93,8 @@ let g:AgSmartCase=1
 " Options for morhetz/gruvbox
 let g:gruvbox_bold=0
 " Options for python-syntax
-let python_highlight_all=1
+let python_highlight_all=1 " Turn all on, then turn off specific ones below
+let python_highlight_space_errors=0 " Do not highlight space_errors (trailing whitespace, really) in python
 """"""""""" End Plugin Options
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,6 +102,7 @@ filetype plugin indent on    " required
 
 """"""""""" Editing Options
 set hlsearch
+set splitright " open all new splits on the right instead of left
 set hidden
 set laststatus=2
 set statusline+=%f%{fugitive#statusline()}
@@ -104,6 +110,7 @@ set statusline+=%f%{fugitive#statusline()}
 let g:myTabSize = 4 " Set myTabSize var to use below
 let &shiftwidth = myTabSize " Tell vim how many columns is a tab
 let &softtabstop = myTabSize " Tab and delete this many columns
+let &tabstop = myTabSize " Actual hard tabstops will be my tab size
 set expandtab " Make tabs be spaces
 set autoread " Always reload a file when it has changed instead of asking
 set autoindent
@@ -120,8 +127,8 @@ set nostartofline " Keeps the cursor in its last spot when changing buffers (pre
 
 
 """"""""""" View options
-set guifont=Menlo:h14
-set linespace=5 " Line space; atom uses 4
+set guifont=Menlo:h12 " Font size; atom uses h14
+set linespace=4 " Line space; atom uses 5
 syntax on
 set background=dark
 " Options for jellybeans

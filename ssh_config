@@ -24,3 +24,47 @@ Host recipes
     HostName 104.131.165.194
     User root
     IdentityFile ~/.ssh/id_rsa
+Host platform1
+    HostName tp-platform1.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform2
+    HostName tp-platform2.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform3
+    HostName tp-platform3.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform4
+    HostName tp-platform4.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform5
+    HostName tp-platform5.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform6
+    HostName tp-platform6.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform7
+    HostName tp-platform7.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform8
+    HostName tp-platform8.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host platform12
+    HostName tp-platform12.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host devcloud
+    HostName tp-dev-mongo1.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host panel
+    HostName 192.168.36.101
+    User root
+    IdentityFile ~/.ssh/id_rsa

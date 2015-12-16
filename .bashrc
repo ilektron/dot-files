@@ -25,6 +25,7 @@ PS1="\[$Cyan\]\w\[$Yellow\]\$(__git_ps1 ' (%s)') \[$White\]-> "
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export CONSTANTS_HOME="/Users/isaachess/Programming/vivint/Constants"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
@@ -43,3 +44,4 @@ alias activate="source ~/Programming/vivint/Platform/MY_ENV/bin/activate" # Ente
 alias start_services="launchctl load ~/Library/LaunchAgents/Vivint/*" # start rabbitmq, nginx, memcached, redis
 alias stop_services="launchctl unload ~/Library/LaunchAgents/Vivint/*" # stop the above
 alias bemuse="nohup ~/Programming/vivint/bemuse/BemuseDev/bemusedev.sh &" # start bemuse
+alias mango="mongo -u admin -p mangotango --authenticationDatabase admin" # run mongo with appropriate vivint user info
