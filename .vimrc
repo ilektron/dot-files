@@ -11,7 +11,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'bling/vim-airline'
@@ -33,11 +33,15 @@ Plugin 'jason0x43/vim-js-indent' " To fix js and ts indenting
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fireplace' " clojure repl support
+Plugin 'guns/vim-clojure-static' " clojure file support (not exactly sure what)
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'hdima/python-syntax' " Added python synax highlighting
 Plugin 'tfnico/vim-gradle' " Gradle support for building java
 Plugin 'derekwyatt/vim-scala' " Scala syntax highlighting and minor features
+Plugin 'joonty/vdebug.git' " debugger for multiple languages
+Plugin 'nginx.vim' " Add nginx syntax highlighting
+Plugin 'saltstack/salt-vim' " Add syntax highlighting for salt
 
 " Color schemes
 Plugin 'morhetz/gruvbox'
@@ -60,7 +64,8 @@ let g:session_default_to_last=1
 let g:session_autoload='yes'
 " Ctrl P options for kien/ctrlp.vim
 let g:ctrlp_show_hidden=1
-let g:ctrlp_working_path_mode = 'wa'
+let g:ctrlp_by_filename=1 " default to only matching filenames in ctrlp
+let g:ctrlp_working_path_mode = 'wa' " hard to explain, read docs
 let g:ctrlp_root_markers=['ctrlp_root.txt']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
@@ -70,6 +75,12 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore "**/*.pyc"
     \ --ignore "**/*.swp"
     \ --ignore "**/*.swap"
+    \ --ignore "CustomerWebApp/*"
+    \ --ignore "pingfederate/*"
+    \ --ignore "bemuse/*"
+    \ --ignore "video/*"
+    \ --ignore "vivint-toys/*"
+    \ --ignore "Platform-salt/*"
     \ -g ""'
 " Options for jiangmiao/auto-pairs
 let g:AutoPairsMapSpace=0
@@ -127,8 +138,8 @@ set nostartofline " Keeps the cursor in its last spot when changing buffers (pre
 
 
 """"""""""" View options
-set guifont=Menlo:h12 " Font size; atom uses h14
-set linespace=4 " Line space; atom uses 5
+set guifont=Hack:h12 " Font size; atom uses h14
+set linespace=3 " Line space; atom uses 5
 syntax on
 set background=dark
 " Options for jellybeans
@@ -143,6 +154,8 @@ colorscheme gruvbox
 "autocmd VimEnter,Colorscheme * hi SignColumn guibg=#0D0D0D " Set gutter background
 "Markdown syntax finding
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"nginx syntax finding
+autocmd BufNewFile,BufReadPost *.conf set filetype=nginx
 " Spell checking options
 autocmd BufRead,BufNewFile *.md setlocal spell "Auto turn on spellcheck for .md files
 autocmd BufRead,BufNewFile hi clear SpellCap "Turn off capitalization spellcheck highlighting

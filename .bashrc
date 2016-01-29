@@ -45,3 +45,16 @@ alias start_services="launchctl load ~/Library/LaunchAgents/Vivint/*" # start ra
 alias stop_services="launchctl unload ~/Library/LaunchAgents/Vivint/*" # stop the above
 alias bemuse="nohup ~/Programming/vivint/bemuse/BemuseDev/bemusedev.sh &" # start bemuse
 alias mango="mongo -u admin -p mangotango --authenticationDatabase admin" # run mongo with appropriate vivint user info
+
+# set vivint platform ip
+function get_my_ip() {
+    echo $(ifconfig -a |egrep -o 'inet 10(\.[0-9]+){3}' |egrep -o '10(\.[0-9]+){3}')
+}
+function get_panel_ip() {
+    echo $(sudo arp-scan -I en3 --localnet |grep 00:25:f0:a8:ae:21 |cut -f 1)
+}
+function set_panel_cloud_address() {
+    PANEL_IP=$(get_panel_ip)
+    MY_IP=$(get_my_ip)
+    curl -v -X POST --data "primary=$MY_IP&secondary=$MY_IP" -H 'Content-Type: application/x-www-form-urlencoded'  http://{$PANEL_IP}:8090/settings/set_cloud_address
+}
