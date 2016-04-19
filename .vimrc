@@ -36,7 +36,9 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'tpope/vim-fireplace' " clojure repl support
 Plugin 'guns/vim-clojure-static' " clojure file support (not exactly sure what)
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'hdima/python-syntax' " Added python synax highlighting
+"Plugin 'hdima/python-syntax' " Added python synax highlighting
+"Plugin 'hynek/vim-python-pep8-indent' " Indent better for Python
+Plugin 'klen/python-mode' " lots o' python stuff for vim
 Plugin 'tfnico/vim-gradle' " Gradle support for building java
 Plugin 'derekwyatt/vim-scala' " Scala syntax highlighting and minor features
 Plugin 'joonty/vdebug.git' " debugger for multiple languages
@@ -80,7 +82,6 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore "bemuse/*"
     \ --ignore "video/*"
     \ --ignore "vivint-toys/*"
-    \ --ignore "Platform-salt/*"
     \ -g ""'
 " Options for jiangmiao/auto-pairs
 let g:AutoPairsMapSpace=0
@@ -103,9 +104,15 @@ autocmd VimEnter,Colorscheme * hi IndentGuidesEven guibg=#3C3836 ctermbg=4
 let g:AgSmartCase=1
 " Options for morhetz/gruvbox
 let g:gruvbox_bold=0
-" Options for python-syntax
-let python_highlight_all=1 " Turn all on, then turn off specific ones below
-let python_highlight_space_errors=0 " Do not highlight space_errors (trailing whitespace, really) in python
+" Options for python-mode
+let g:pymode_folding=0
+let g:pymode_lint=0
+let g:pymode_lint_on_write=0
+let g:pymode_rope=0
+let g:pymode_breakpoint_bind='<leader>b'
+let g:pymode_run=0
+let g:pymode_options_colorcolumn=0
+let g:pymode_syntax_space_errors=0
 """"""""""" End Plugin Options
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,6 +191,7 @@ vmap <C-Down> ]egv
 """"""""""" Custom Commands
 command Bd 1,1000bd
 command Writing set wrap linebreak nolist columns=85 nocursorline nonumber
+command FormatJson %!python -m json.tool
 
 " F10 reveals the syntax highlighting on a specific character
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

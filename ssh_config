@@ -60,11 +60,19 @@ Host platform12
     HostName tp-platform12.vivint.com
     User root
     IdentityFile ~/.ssh/id_rsa
+Host platform13
+    HostName tp-platform13.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
+Host salesforce
+    HostName tp-platform-sf.vivint.com
+    User root
+    IdentityFile ~/.ssh/id_rsa
 Host devcloud
     HostName tp-dev-mongo1.vivint.com
     User root
     IdentityFile ~/.ssh/id_rsa
 Host panel
-    HostName 10.1.24.111
+    HostName 10.1.24.106
     User root
     IdentityFile ~/.ssh/id_rsa
