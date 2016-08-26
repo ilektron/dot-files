@@ -36,8 +36,7 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'tpope/vim-fireplace' " clojure repl support
 Plugin 'guns/vim-clojure-static' " clojure file support (not exactly sure what)
 Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'hdima/python-syntax' " Added python synax highlighting
-"Plugin 'hynek/vim-python-pep8-indent' " Indent better for Python
+Plugin 'fatih/vim-go' " Support for golang
 Plugin 'klen/python-mode' " lots o' python stuff for vim
 Plugin 'tfnico/vim-gradle' " Gradle support for building java
 Plugin 'derekwyatt/vim-scala' " Scala syntax highlighting and minor features
@@ -102,8 +101,6 @@ autocmd VimEnter,Colorscheme * hi IndentGuidesOdd  guibg=#3C3836 ctermbg=3
 autocmd VimEnter,Colorscheme * hi IndentGuidesEven guibg=#3C3836 ctermbg=4
 " Ag options
 let g:AgSmartCase=1
-" Options for morhetz/gruvbox
-let g:gruvbox_bold=0
 " Options for python-mode
 let g:pymode_folding=0
 let g:pymode_lint=0
@@ -113,12 +110,18 @@ let g:pymode_breakpoint_bind='<leader>b'
 let g:pymode_run=0
 let g:pymode_options_colorcolumn=0
 let g:pymode_syntax_space_errors=0
+let g:pymode_trim_whitespaces=0
 """"""""""" End Plugin Options
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+""""""""""" Neovim specific options
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True colors by default
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 """"""""""" Editing Options
+"set clipboard=unnamedplus " put all yanked stuff into sytem clipboard
 set hlsearch
 set splitright " open all new splits on the right instead of left
 set hidden
@@ -142,11 +145,11 @@ set incsearch
 set nowrap
 set tags=tags; " Tell vim to look for tags recursively downwords
 set nostartofline " Keeps the cursor in its last spot when changing buffers (prevents it from going to start of line)
-
+let g:python_host_prog = '/usr/bin/python'
 
 """"""""""" View options
 set guifont=Hack:h12 " Font size; atom uses h14
-set linespace=3 " Line space; atom uses 5
+set linespace=4 " Line space; atom uses 4 (when font is 12 -- Atom uses 1.5 * line height)
 syntax on
 set background=dark
 " Options for jellybeans
@@ -154,6 +157,9 @@ let g:jellybeans_overrides = {
 \    'Normal': { 'guifg': 'DBDBC3'},
 \    'CursorLine': { 'guibg': '2B2B2B' },
 \}
+" Options for morhetz/gruvbox
+let g:gruvbox_bold=0
+let g:gruvbox_italic=1
 colorscheme gruvbox
 "Override background to force black
 "autocmd VimEnter,Colorscheme * hi Normal guibg=#0D0D0D " Set background color to almost-black
@@ -166,6 +172,7 @@ autocmd BufNewFile,BufReadPost *.conf set filetype=nginx
 " Spell checking options
 autocmd BufRead,BufNewFile *.md setlocal spell "Auto turn on spellcheck for .md files
 autocmd BufRead,BufNewFile hi clear SpellCap "Turn off capitalization spellcheck highlighting
+autocmd FocusGained * silent! checktime "Tell neovim to always check if file has changed on focus
 
 """"""""""" Key mappings
 let mapleader=","

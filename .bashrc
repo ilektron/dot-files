@@ -54,7 +54,7 @@ alias DataListener="cd ~/Programming/vivint/DataListener"
 
 # set vivint platform ip
 function get_my_ip() {
-    echo $(ifconfig -a |egrep -o 'inet 10(\.[0-9]+){3}' |egrep -o '10(\.[0-9]+){3}')
+    echo $(ifconfig -a |egrep -o 'inet 192(\.[0-9]+){3}' |egrep -o '192(\.[0-9]+){3}')
 }
 function get_panel_ip() {
     echo $(sudo arp-scan -I en7 --localnet |grep 00:25:f0:a8:ae:21 |cut -f 1)
@@ -109,3 +109,17 @@ function vivint_start() {
     # start ping federate
     vivint_pingfederate
 }
+
+# PDB FIX
+# Changed the interaction funtion in pdb (located in /usr/lib/python2.7/pdb.py)
+# The fix saves off the sys.stdin, then forces it to be read from the stdin file, then sets it back when the interaction is done
+#def interaction(self, frame, traceback):
+    #_stdin = sys.stdin
+    #try:
+        #sys.stdin = file('/dev/stdin')
+        #self.setup(frame, traceback)
+        #self.print_stack_entry(self.stack[self.curindex])
+        #self.cmdloop()
+        #self.forget()
+    #finally:
+        #sys.stdin = _stdin
