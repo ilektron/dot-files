@@ -4,7 +4,7 @@ filetype off                  " required
 
 " Plugins
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " File browser
@@ -37,14 +37,23 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'othree/html5.vim'
 " Javascript support
 Plugin 'pangloss/vim-javascript'
-Plugin 'mileszs/ack.vim'
-Plugin 'docunext/closetag.vim'
-Plugin 'nelstrom/vim-markdown-preview'
+Plugin 'mxw/vim-jsx'
 Plugin 'jason0x43/vim-js-indent' " To fix js and ts indenting
+Plugin 'ternjs/tern_for_vim' " sytanx completer
+
+" Javascript syntax highlighting
+Plugin 'vim-syntastic/syntastic'
+" Search plugin using ag?
+Plugin 'mileszs/ack.vim'
+" Close HTML Tags
+Plugin 'docunext/closetag.vim'
+
+Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'kien/rainbow_parentheses.vim'
+
 Plugin 'fatih/vim-go' " Support for golang
 Plugin 'klen/python-mode' " lots o' python stuff for vim
 Plugin 'joonty/vdebug.git' " debugger for multiple languages
@@ -70,6 +79,7 @@ Plugin 'w0ng/vim-hybrid'
 
 " " Options for xolox/vim-session
 " let g:session_autosave='yes'
+let g:session_autosave = 'no'
 " let g:session_default_to_last=1
 " let g:session_autoload='yes'
 " Options for bling/vim-airline
@@ -98,7 +108,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 let g:AutoPairsMapSpace=0
 " Options for Valloric/YouCompleteMe
 " let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1, 'jsx': 1, 'typescript': 1 , 'python': 1} " Disables syntax completion for file types, so it uses the stuff in my buffers instead
-let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1, 'jsx': 1, 'typescript': 1 } " Disables syntax completion for file types, so it uses the stuff in my buffers instead
+" let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1, 'jsx': 1, 'typescript': 1 } " Disables syntax completion for file types, so it uses the stuff in my buffers instead
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion=1
 " Options for jason0x43/vim-js-indent
@@ -123,6 +133,10 @@ let g:pymode_options_colorcolumn=0
 let g:pymode_syntax_space_errors=0
 let g:pymode_trim_whitespaces=0
 let g:pymode_options_max_line_length=120
+
+" Change tab width for javascript
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+let g:syntastic_javascript_checkers=['eslint']
 
 " Options for milesza/ack.vim
 if executable('ag')
@@ -217,6 +231,10 @@ nnoremap <leader>p :bn<cr>
 nnoremap <c-]>      :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>d  :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>f  :YcmCompleter GoToReferences<cr>
+
+""""""" Clang-format
+nnoremap <c-f> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+inoremap <c-f> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 
 """"""""""" Custom Commands
 " command Bd 1,1000bd
