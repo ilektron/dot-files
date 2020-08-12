@@ -75,6 +75,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'w0ng/vim-hybrid'
 
+" Try a bitbake plugin
+Plugin 'kergoth/vim-bitbake'
+
 """"""""""" Plugin Options
 
 " " Options for xolox/vim-session
