@@ -38,6 +38,7 @@ Plugin 'othree/html5.vim'
 " Javascript support
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'jason0x43/vim-js-indent' " To fix js and ts indenting
 Plugin 'ternjs/tern_for_vim' " sytanx completer
 
@@ -47,8 +48,16 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'mileszs/ack.vim'
 " Close HTML Tags
 Plugin 'docunext/closetag.vim'
+" Php Formatter
+" Plugin 'beanworks/vim-phpfmt'
+" Plugin 'prettier/vim-prettier'
+Plugin 'chiel92/vim-autoformat'
 
-Plugin 'nelstrom/vim-markdown-preview'
+" Markdown plugins
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'iamcco/markdown-preview.nvim'
+
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'chase/vim-ansible-yaml'
@@ -162,7 +171,7 @@ set hidden
 set laststatus=2
 set statusline+=%f%{fugitive#statusline()}
 " Tab options
-let g:myTabSize = 4 " Set myTabSize var to use below
+let g:myTabSize = 2 " Set myTabSize var to use below
 let &shiftwidth = myTabSize " Tell vim how many columns is a tab
 let &softtabstop = myTabSize " Tab and delete this many columns
 let &tabstop = myTabSize " Actual hard tabstops will be my tab size
@@ -236,7 +245,7 @@ nnoremap <leader>d  :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>f  :YcmCompleter GoToReferences<cr>
 
 """"""" Clang-format
-nnoremap <c-f> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+nnoremap <leader>. :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 inoremap <c-f> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 
 """"""""""" Custom Commands
